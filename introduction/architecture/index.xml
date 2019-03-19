@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kubernetes Architecture on Amazon EKS Workshop</title>
+    <title>쿠버네티스 아키텍처 on Amazon EKS Workshop</title>
     <link>/introduction/architecture/</link>
-    <description>Recent content in Kubernetes Architecture on Amazon EKS Workshop</description>
+    <description>Recent content in 쿠버네티스 아키텍처 on Amazon EKS Workshop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
     <lastBuildDate>Wed, 03 Oct 2018 10:17:52 -0700</lastBuildDate>
@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Architectural Overview</title>
+      <title>아키텍처 개요</title>
       <link>/introduction/architecture/architecture_control_and_data_overview/</link>
       <pubDate>Wed, 03 Oct 2018 10:18:20 -0700</pubDate>
       
@@ -21,38 +21,39 @@
     </item>
     
     <item>
-      <title>Control Plane</title>
+      <title>콘트롤 플레인</title>
       <link>/introduction/architecture/architecture_control/</link>
       <pubDate>Wed, 03 Oct 2018 10:18:27 -0700</pubDate>
       
       <guid>/introduction/architecture/architecture_control/</guid>
-      <description>graph TB kubectl{kubectl} subgraph ControlPlane api(API Server) controller(Controller Manager) scheduler(Scheduler) etcd(etcd) end kubectl--api controller--api scheduler--api api--kubelet api--etcd classDef green fill:#9f6,stroke:#333,stroke-width:4px; classDef orange fill:#f96,stroke:#333,stroke-width:4px; classDef blue fill:#6495ed,stroke:#333,stroke-width:4px; class api blue; class internet green; class kubectl orange;   One or More API Servers: Entry point for REST / kubectl
- etcd: Distributed key/value store
- Controller-manager: Always evaluating current vs desired state
- Scheduler: Schedules pods to worker nodes
-  Check out the official Kubernetes documentation for a more in-depth explanation of control plane components.</description>
+      <description>graph TB kubectl{kubectl} subgraph ControlPlane api(API Server) controller(Controller Manager) scheduler(Scheduler) etcd(etcd) end kubectl--api controller--api scheduler--api api--kubelet api--etcd classDef green fill:#9f6,stroke:#333,stroke-width:4px; classDef orange fill:#f96,stroke:#333,stroke-width:4px; classDef blue fill:#6495ed,stroke:#333,stroke-width:4px; class api blue; class internet green; class kubectl orange;   1개 이상의 API 서버: kubectl 의 REST 진입점
+ etcd: 분산 키/벨류 저장소
+ 콘트롤 매니저: 항상 현재 상태와 원하는 상태르 평가
+ 스케줄러: 작업 노드에 파드를 스케줄링
+  쿠버네티스 공식 문서에서 콘트롤 플레인에 대해 더 깊이 있는 설명을 확인할 수 있습니다.</description>
     </item>
     
     <item>
-      <title>Data Plane</title>
+      <title>데이터 플레인</title>
       <link>/introduction/architecture/architecture_worker/</link>
       <pubDate>Wed, 03 Oct 2018 10:18:27 -0700</pubDate>
       
       <guid>/introduction/architecture/architecture_worker/</guid>
-      <description>graph TB internet((internet)) subgraph worker1 kubelet1(kubelet) kube-proxy1(kube-proxy) subgraph docker1 subgraph podA containerA[container] end subgraph podB containerB[container] end end end internet--kube-proxy1 api--kubelet1 kubelet1--containerA kubelet1--containerB kube-proxy1--containerA kube-proxy1--containerB classDef green fill:#9f6,stroke:#333,stroke-width:4px; classDef orange fill:#f96,stroke:#333,stroke-width:4px; classDef blue fill:#6495ed,stroke:#333,stroke-width:4px; class api blue; class internet green; class kubectl orange;   Made up of worker nodes
- kubelet: Acts as a conduit between the API server and the node
- kube-proxy: Manages IP translation and routing</description>
+      <description>graph TB internet((internet)) subgraph worker1 kubelet1(kubelet) kube-proxy1(kube-proxy) subgraph docker1 subgraph podA containerA[container] end subgraph podB containerB[container] end end end internet--kube-proxy1 api--kubelet1 kubelet1--containerA kubelet1--containerB kube-proxy1--containerA kube-proxy1--containerB classDef green fill:#9f6,stroke:#333,stroke-width:4px; classDef orange fill:#f96,stroke:#333,stroke-width:4px; classDef blue fill:#6495ed,stroke:#333,stroke-width:4px; class api blue; class internet green; class kubectl orange;   작업 노드로 구성
+ kubelet: API 서버와 노드 간에 연결 역할
+ kube-proxy: IP 변환과 라우팅 관리
+  쿠버네티스 공식 문서에서 데이터 플레인에 대해 더 깊이 있는 설명을 확인할 수 있습니다.</description>
     </item>
     
     <item>
-      <title>Kubernetes Cluster Setup</title>
+      <title>쿠버네티스 클러스터 설치</title>
       <link>/introduction/architecture/cluster_setup_options/</link>
       <pubDate>Wed, 03 Oct 2018 10:21:11 -0700</pubDate>
       
       <guid>/introduction/architecture/cluster_setup_options/</guid>
-      <description>In addition to the managed Amazon EKS solution, there are many tools available to help bootstrap and configure a self-managed Kubernetes cluster. They include:
- Minikube – Development and Learning Kops – Learning, Development, Production Kubeadm – Learning, Development, Production Docker for Mac - Learning, Development Kubernetes IN Docker - Learning, Development  Alongside these open source solutions, there are also many commercial options available.
-Let&amp;rsquo;s take a look at Amazon EKS!</description>
+      <description>매니지드 Amazon EKS 솔루션에 외에 자체 관리 쿠버네티스 클러스터를 시작하고 설정하는데 도움이 되는 도구가 많습니다. 일부는 다음과 같습니다.
+ Minikube – 개발과 학습 Kops – 학습, 개발, 제품화 Kubeadm – 학습, 개발, 제품화 맥을 위한 도커 - 학습, 개발 도커에서 쿠버네티스 - 학습, 개발  이러한 오픈 소스 솔루션 외에도 많은 상용 옵션을 사용할 수 있습니다.
+Amazon EKS를 살펴 봅시다!</description>
     </item>
     
   </channel>
