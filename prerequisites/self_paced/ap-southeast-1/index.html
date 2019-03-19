@@ -12,27 +12,27 @@
     <meta name="description" content="Amazon EKS 워크샵">
 <meta name="author" content="Brent Langston">
 
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
-<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../../../images/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="../../../images/favicon.ico" type="image/x-icon" />
 
-    <title>Logging with Elasticsearch, Fluentd, and Kibana (EFK) :: Amazon EKS 워크샵</title>
+    <title>Singapore :: Amazon EKS 워크샵</title>
 
     
-    <link href="../css/nucleus.css?1553010597" rel="stylesheet">
-    <link href="../css/fontawesome-all.min.css?1553010597" rel="stylesheet">
-    <link href="../css/hybrid.css?1553010597" rel="stylesheet">
-    <link href="../css/featherlight.min.css?1553010597" rel="stylesheet">
-    <link href="../css/perfect-scrollbar.min.css?1553010597" rel="stylesheet">
-    <link href="../css/auto-complete.css?1553010597" rel="stylesheet">
-    <link href="../css/theme.css?1553010597" rel="stylesheet">
-    <link href="../css/hugo-theme.css?1553010597" rel="stylesheet">
-    <link href="../css/jquery-ui.min.css?1553010597" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1553010598" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1553010598" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1553010598" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1553010598" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1553010598" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1553010598" rel="stylesheet">
+    <link href="../../../css/theme.css?1553010598" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1553010598" rel="stylesheet">
+    <link href="../../../css/jquery-ui.min.css?1553010598" rel="stylesheet">
     
-      <link href="../css/theme-mine.css?1553010597" rel="stylesheet">
+      <link href="../../../css/theme-mine.css?1553010598" rel="stylesheet">
     
 
-    <script src="../js/jquery-3.3.1.min.js?1553010597"></script>
-    <script src="../js/jquery-ui-1.12.1.min.js?1553010597"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1553010598"></script>
+    <script src="../../../js/jquery-ui-1.12.1.min.js?1553010598"></script>
 
 
     <style type="text/css">
@@ -47,14 +47,14 @@
     </style>
     
   </head>
-  <body class="" data-url="/logging/">
+  <body class="" data-url="/prerequisites/self_paced/ap-southeast-1/">
     <nav id="sidebar" class="">
 
 
 
   <div id="header-wrapper">
     <div id="header">
-      <a href="../" title="Go home"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 30" width="60%" style="padding:20px 0px;"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg></a>
+      <a href="../../../" title="Go home"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 30" width="60%" style="padding:20px 0px;"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg></a>
 
     </div>
     
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1553010597"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1553010597"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1553010598"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1553010598"></script>
 <script type="text/javascript">
     
         var baseurl = '\/';
     
 </script>
-<script type="text/javascript" src="../js/search.js?1553010597"></script>
+<script type="text/javascript" src="../../../js/search.js?1553010598"></script>
 
     
   </div>
@@ -92,7 +92,7 @@
         
         
         ">
-      <a href="../introduction/">
+      <a href="../../../introduction/">
           Introduction
           
       </a>
@@ -119,7 +119,7 @@
         
         
         ">
-      <a href="../introduction/basics/">
+      <a href="../../../introduction/basics/">
           Kubernetes (k8s) Basics
           
       </a>
@@ -140,7 +140,7 @@
   
     
       <li data-nav-id="/introduction/basics/what_is_k8s/" title="What is Kubernetes?" class="dd-item ">
-        <a href="../introduction/basics/what_is_k8s/">
+        <a href="../../../introduction/basics/what_is_k8s/">
         What is Kubernetes?
         
         </a>
@@ -159,7 +159,7 @@
   
     
       <li data-nav-id="/introduction/basics/concepts_nodes/" title="Kubernetes Nodes" class="dd-item ">
-        <a href="../introduction/basics/concepts_nodes/">
+        <a href="../../../introduction/basics/concepts_nodes/">
         Kubernetes Nodes
         
         </a>
@@ -178,7 +178,7 @@
   
     
       <li data-nav-id="/introduction/basics/concepts_objects/" title="K8s Objects Overview" class="dd-item ">
-        <a href="../introduction/basics/concepts_objects/">
+        <a href="../../../introduction/basics/concepts_objects/">
         K8s Objects Overview
         
         </a>
@@ -197,7 +197,7 @@
   
     
       <li data-nav-id="/introduction/basics/concepts_objects_details_1/" title="K8s Objects Detail (1/2)" class="dd-item ">
-        <a href="../introduction/basics/concepts_objects_details_1/">
+        <a href="../../../introduction/basics/concepts_objects_details_1/">
         K8s Objects Detail (1/2)
         
         </a>
@@ -216,7 +216,7 @@
   
     
       <li data-nav-id="/introduction/basics/concepts_objects_details_2/" title="K8s Objects Detail (2/2)" class="dd-item ">
-        <a href="../introduction/basics/concepts_objects_details_2/">
+        <a href="../../../introduction/basics/concepts_objects_details_2/">
         K8s Objects Detail (2/2)
         
         </a>
@@ -248,7 +248,7 @@
         
         
         ">
-      <a href="../introduction/architecture/">
+      <a href="../../../introduction/architecture/">
           쿠버네티스 아키텍처
           
       </a>
@@ -269,7 +269,7 @@
   
     
       <li data-nav-id="/introduction/architecture/architecture_control_and_data_overview/" title="아키텍처 개요" class="dd-item ">
-        <a href="../introduction/architecture/architecture_control_and_data_overview/">
+        <a href="../../../introduction/architecture/architecture_control_and_data_overview/">
         아키텍처 개요
         
         </a>
@@ -288,7 +288,7 @@
   
     
       <li data-nav-id="/introduction/architecture/architecture_control/" title="콘트롤 플레인" class="dd-item ">
-        <a href="../introduction/architecture/architecture_control/">
+        <a href="../../../introduction/architecture/architecture_control/">
         콘트롤 플레인
         
         </a>
@@ -307,7 +307,7 @@
   
     
       <li data-nav-id="/introduction/architecture/architecture_worker/" title="데이터 플레인" class="dd-item ">
-        <a href="../introduction/architecture/architecture_worker/">
+        <a href="../../../introduction/architecture/architecture_worker/">
         데이터 플레인
         
         </a>
@@ -326,7 +326,7 @@
   
     
       <li data-nav-id="/introduction/architecture/cluster_setup_options/" title="쿠버네티스 클러스터 설치" class="dd-item ">
-        <a href="../introduction/architecture/cluster_setup_options/">
+        <a href="../../../introduction/architecture/cluster_setup_options/">
         쿠버네티스 클러스터 설치
         
         </a>
@@ -358,7 +358,7 @@
         
         
         ">
-      <a href="../introduction/eks/">
+      <a href="../../../introduction/eks/">
           Amazon EKS
           
       </a>
@@ -379,7 +379,7 @@
   
     
       <li data-nav-id="/introduction/eks/eks_customers/" title="EKS Cluster Creation Workflow" class="dd-item ">
-        <a href="../introduction/eks/eks_customers/">
+        <a href="../../../introduction/eks/eks_customers/">
         EKS Cluster Creation Workflow
         
         </a>
@@ -398,7 +398,7 @@
   
     
       <li data-nav-id="/introduction/eks/eks_control_plane/" title="What happens when you create your EKS cluster" class="dd-item ">
-        <a href="../introduction/eks/eks_control_plane/">
+        <a href="../../../introduction/eks/eks_control_plane/">
         What happens when you create your EKS cluster
         
         </a>
@@ -417,7 +417,7 @@
   
     
       <li data-nav-id="/introduction/eks/eks_high_architecture/" title="EKS Architecture for Control plane and Worker node communication" class="dd-item ">
-        <a href="../introduction/eks/eks_high_architecture/">
+        <a href="../../../introduction/eks/eks_high_architecture/">
         EKS Architecture for Control plane and Worker node communication
         
         </a>
@@ -436,7 +436,7 @@
   
     
       <li data-nav-id="/introduction/eks/eks_high_level/" title="High Level" class="dd-item ">
-        <a href="../introduction/eks/eks_high_level/">
+        <a href="../../../introduction/eks/eks_high_level/">
         High Level
         
         </a>
@@ -455,7 +455,7 @@
   
     
       <li data-nav-id="/introduction/eks/stay_tuned/" title="Amazon EKS!" class="dd-item ">
-        <a href="../introduction/eks/stay_tuned/">
+        <a href="../../../introduction/eks/stay_tuned/">
         Amazon EKS!
         
         </a>
@@ -490,11 +490,11 @@
   
     
     <li data-nav-id="/prerequisites/" title="워크샵 준비하기" class="dd-item 
-        
+        parent
         
         
         ">
-      <a href="../prerequisites/">
+      <a href="../../../prerequisites/">
           워크샵 준비하기
           
       </a>
@@ -515,7 +515,7 @@
   
     
       <li data-nav-id="/prerequisites/self_paced/account/" title="AWS 계정 만들기" class="dd-item ">
-        <a href="../prerequisites/self_paced/account/">
+        <a href="../../../prerequisites/self_paced/account/">
         AWS 계정 만들기
         
         </a>
@@ -534,7 +534,7 @@
   
     
       <li data-nav-id="/prerequisites/self_paced/workspace/" title="워크스페이스 생성하기" class="dd-item ">
-        <a href="../prerequisites/self_paced/workspace/">
+        <a href="../../../prerequisites/self_paced/workspace/">
         워크스페이스 생성하기
         
         </a>
@@ -553,7 +553,7 @@
   
     
       <li data-nav-id="/prerequisites/sshkey/" title="SSH 키 생성하기" class="dd-item ">
-        <a href="../prerequisites/sshkey/">
+        <a href="../../../prerequisites/sshkey/">
         SSH 키 생성하기
         
         </a>
@@ -572,7 +572,7 @@
   
     
       <li data-nav-id="/prerequisites/k8stools/" title="쿠버네티스 도구 설치" class="dd-item ">
-        <a href="../prerequisites/k8stools/">
+        <a href="../../../prerequisites/k8stools/">
         쿠버네티스 도구 설치
         
         </a>
@@ -591,7 +591,7 @@
   
     
       <li data-nav-id="/prerequisites/clone/" title="실습 서비스 레포지토리 클론" class="dd-item ">
-        <a href="../prerequisites/clone/">
+        <a href="../../../prerequisites/clone/">
         실습 서비스 레포지토리 클론
         
         </a>
@@ -610,7 +610,7 @@
   
     
       <li data-nav-id="/prerequisites/self_paced/iamrole/" title="워크스페이스를 위한 IAM 역할 생성" class="dd-item ">
-        <a href="../prerequisites/self_paced/iamrole/">
+        <a href="../../../prerequisites/self_paced/iamrole/">
         워크스페이스를 위한 IAM 역할 생성
         
         </a>
@@ -629,7 +629,7 @@
   
     
       <li data-nav-id="/prerequisites/self_paced/ec2instance/" title="워크스페이스에 IAM 역할 부여하기" class="dd-item ">
-        <a href="../prerequisites/self_paced/ec2instance/">
+        <a href="../../../prerequisites/self_paced/ec2instance/">
         워크스페이스에 IAM 역할 부여하기
         
         </a>
@@ -648,7 +648,7 @@
   
     
       <li data-nav-id="/prerequisites/workspaceiam/" title="워크스페이스의 IAM 설정 업데이트" class="dd-item ">
-        <a href="../prerequisites/workspaceiam/">
+        <a href="../../../prerequisites/workspaceiam/">
         워크스페이스의 IAM 설정 업데이트
         
         </a>
@@ -690,7 +690,7 @@
         
         
         ">
-      <a href="../eksctl/">
+      <a href="../../../eksctl/">
           Launch using eksctl
           
       </a>
@@ -711,7 +711,7 @@
   
     
       <li data-nav-id="/eksctl/prerequisites/" title="Prerequisites" class="dd-item ">
-        <a href="../eksctl/prerequisites/">
+        <a href="../../../eksctl/prerequisites/">
         Prerequisites
         
         </a>
@@ -730,7 +730,7 @@
   
     
       <li data-nav-id="/eksctl/launcheks/" title="Launch EKS" class="dd-item ">
-        <a href="../eksctl/launcheks/">
+        <a href="../../../eksctl/launcheks/">
         Launch EKS
         
         </a>
@@ -749,7 +749,7 @@
   
     
       <li data-nav-id="/eksctl/test/" title="Test the Cluster" class="dd-item ">
-        <a href="../eksctl/test/">
+        <a href="../../../eksctl/test/">
         Test the Cluster
         
         </a>
@@ -779,7 +779,7 @@
         
         
         ">
-      <a href="../dashboard/">
+      <a href="../../../dashboard/">
           Deploy the Kubernetes Dashboard
           
       </a>
@@ -800,7 +800,7 @@
   
     
       <li data-nav-id="/dashboard/dashboard/" title="Deploy the Official Kubernetes Dashboard" class="dd-item ">
-        <a href="../dashboard/dashboard/">
+        <a href="../../../dashboard/dashboard/">
         Deploy the Official Kubernetes Dashboard
         
         </a>
@@ -819,7 +819,7 @@
   
     
       <li data-nav-id="/dashboard/connect/" title="Access the Dashboard" class="dd-item ">
-        <a href="../dashboard/connect/">
+        <a href="../../../dashboard/connect/">
         Access the Dashboard
         
         </a>
@@ -849,7 +849,7 @@
         
         
         ">
-      <a href="../deploy/">
+      <a href="../../../deploy/">
           Deploy the Example Microservices
           
       </a>
@@ -870,7 +870,7 @@
   
     
       <li data-nav-id="/deploy/applications/" title="Deploy our Sample Applications" class="dd-item ">
-        <a href="../deploy/applications/">
+        <a href="../../../deploy/applications/">
         Deploy our Sample Applications
         
         </a>
@@ -889,7 +889,7 @@
   
     
       <li data-nav-id="/deploy/deploynodejs/" title="Deploy NodeJS Backend API" class="dd-item ">
-        <a href="../deploy/deploynodejs/">
+        <a href="../../../deploy/deploynodejs/">
         Deploy NodeJS Backend API
         
         </a>
@@ -908,7 +908,7 @@
   
     
       <li data-nav-id="/deploy/deploycrystal/" title="Deploy Crystal Backend API" class="dd-item ">
-        <a href="../deploy/deploycrystal/">
+        <a href="../../../deploy/deploycrystal/">
         Deploy Crystal Backend API
         
         </a>
@@ -927,7 +927,7 @@
   
     
       <li data-nav-id="/deploy/servicetype/" title="Let&#39;s check Service Types" class="dd-item ">
-        <a href="../deploy/servicetype/">
+        <a href="../../../deploy/servicetype/">
         Let&#39;s check Service Types
         
         </a>
@@ -946,7 +946,7 @@
   
     
       <li data-nav-id="/deploy/servicerole/" title="Ensure the ELB Service Role exists" class="dd-item ">
-        <a href="../deploy/servicerole/">
+        <a href="../../../deploy/servicerole/">
         Ensure the ELB Service Role exists
         
         </a>
@@ -965,7 +965,7 @@
   
     
       <li data-nav-id="/deploy/deployfrontend/" title="Deploy Frontend Service" class="dd-item ">
-        <a href="../deploy/deployfrontend/">
+        <a href="../../../deploy/deployfrontend/">
         Deploy Frontend Service
         
         </a>
@@ -984,7 +984,7 @@
   
     
       <li data-nav-id="/deploy/viewservices/" title="Find the Service Address" class="dd-item ">
-        <a href="../deploy/viewservices/">
+        <a href="../../../deploy/viewservices/">
         Find the Service Address
         
         </a>
@@ -1003,7 +1003,7 @@
   
     
       <li data-nav-id="/deploy/scalebackend/" title="Scale the Backend Services" class="dd-item ">
-        <a href="../deploy/scalebackend/">
+        <a href="../../../deploy/scalebackend/">
         Scale the Backend Services
         
         </a>
@@ -1022,7 +1022,7 @@
   
     
       <li data-nav-id="/deploy/scalefrontend/" title="Scale the Frontend" class="dd-item ">
-        <a href="../deploy/scalefrontend/">
+        <a href="../../../deploy/scalefrontend/">
         Scale the Frontend
         
         </a>
@@ -1041,7 +1041,7 @@
   
     
       <li data-nav-id="/deploy/cleanup/" title="Cleanup the applications" class="dd-item ">
-        <a href="../deploy/cleanup/">
+        <a href="../../../deploy/cleanup/">
         Cleanup the applications
         
         </a>
@@ -1071,7 +1071,7 @@
         
         
         ">
-      <a href="../spotworkers/">
+      <a href="../../../spotworkers/">
           Using Spot Instances with EKS
           
       </a>
@@ -1092,7 +1092,7 @@
   
     
       <li data-nav-id="/spotworkers/workers/" title="Add EC2 Workers - On-Demand and Spot" class="dd-item ">
-        <a href="../spotworkers/workers/">
+        <a href="../../../spotworkers/workers/">
         Add EC2 Workers - On-Demand and Spot
         
         </a>
@@ -1111,7 +1111,7 @@
   
     
       <li data-nav-id="/spotworkers/deployhandler/" title="Deploy The Spot Interrupt Handler" class="dd-item ">
-        <a href="../spotworkers/deployhandler/">
+        <a href="../../../spotworkers/deployhandler/">
         Deploy The Spot Interrupt Handler
         
         </a>
@@ -1130,7 +1130,7 @@
   
     
       <li data-nav-id="/spotworkers/preferspot/" title="Deploy an Application on Spot" class="dd-item ">
-        <a href="../spotworkers/preferspot/">
+        <a href="../../../spotworkers/preferspot/">
         Deploy an Application on Spot
         
         </a>
@@ -1149,7 +1149,7 @@
   
     
       <li data-nav-id="/spotworkers/cleanup/" title="Cleanup" class="dd-item ">
-        <a href="../spotworkers/cleanup/">
+        <a href="../../../spotworkers/cleanup/">
         Cleanup
         
         </a>
@@ -1179,7 +1179,7 @@
         
         
         ">
-      <a href="../helm_root/">
+      <a href="../../../helm_root/">
           Helm
           
       </a>
@@ -1206,7 +1206,7 @@
         
         
         ">
-      <a href="../helm_root/helm_intro/">
+      <a href="../../../helm_root/helm_intro/">
           Install Helm on EKS
           
       </a>
@@ -1227,7 +1227,7 @@
   
     
       <li data-nav-id="/helm_root/helm_intro/install/" title="Install Helm CLI" class="dd-item ">
-        <a href="../helm_root/helm_intro/install/">
+        <a href="../../../helm_root/helm_intro/install/">
         Install Helm CLI
         
         </a>
@@ -1259,7 +1259,7 @@
         
         
         ">
-      <a href="../helm_root/helm_nginx/">
+      <a href="../../../helm_root/helm_nginx/">
           Deploy Nginx With Helm
           
       </a>
@@ -1280,7 +1280,7 @@
   
     
       <li data-nav-id="/helm_root/helm_nginx/updatecharts/" title="Update the Chart Repository" class="dd-item ">
-        <a href="../helm_root/helm_nginx/updatecharts/">
+        <a href="../../../helm_root/helm_nginx/updatecharts/">
         Update the Chart Repository
         
         </a>
@@ -1299,7 +1299,7 @@
   
     
       <li data-nav-id="/helm_root/helm_nginx/searchchart/" title="Search the Chart Repository" class="dd-item ">
-        <a href="../helm_root/helm_nginx/searchchart/">
+        <a href="../../../helm_root/helm_nginx/searchchart/">
         Search the Chart Repository
         
         </a>
@@ -1318,7 +1318,7 @@
   
     
       <li data-nav-id="/helm_root/helm_nginx/addbitnamirepo/" title="Add the Bitnami Repository" class="dd-item ">
-        <a href="../helm_root/helm_nginx/addbitnamirepo/">
+        <a href="../../../helm_root/helm_nginx/addbitnamirepo/">
         Add the Bitnami Repository
         
         </a>
@@ -1337,7 +1337,7 @@
   
     
       <li data-nav-id="/helm_root/helm_nginx/installnginx/" title="Install bitnami/nginx" class="dd-item ">
-        <a href="../helm_root/helm_nginx/installnginx/">
+        <a href="../../../helm_root/helm_nginx/installnginx/">
         Install bitnami/nginx
         
         </a>
@@ -1356,7 +1356,7 @@
   
     
       <li data-nav-id="/helm_root/helm_nginx/cleaningup/" title="Clean Up" class="dd-item ">
-        <a href="../helm_root/helm_nginx/cleaningup/">
+        <a href="../../../helm_root/helm_nginx/cleaningup/">
         Clean Up
         
         </a>
@@ -1388,7 +1388,7 @@
         
         
         ">
-      <a href="../helm_root/helm_micro/">
+      <a href="../../../helm_root/helm_micro/">
           Deploy Example Microservices Using Helm
           
       </a>
@@ -1409,7 +1409,7 @@
   
     
       <li data-nav-id="/helm_root/helm_micro/create_chart/" title="Create a Chart" class="dd-item ">
-        <a href="../helm_root/helm_micro/create_chart/">
+        <a href="../../../helm_root/helm_micro/create_chart/">
         Create a Chart
         
         </a>
@@ -1428,7 +1428,7 @@
   
     
       <li data-nav-id="/helm_root/helm_micro/customize/" title="Customize Defaults" class="dd-item ">
-        <a href="../helm_root/helm_micro/customize/">
+        <a href="../../../helm_root/helm_micro/customize/">
         Customize Defaults
         
         </a>
@@ -1447,7 +1447,7 @@
   
     
       <li data-nav-id="/helm_root/helm_micro/deploy/" title="Deploy the eksdemo Chart" class="dd-item ">
-        <a href="../helm_root/helm_micro/deploy/">
+        <a href="../../../helm_root/helm_micro/deploy/">
         Deploy the eksdemo Chart
         
         </a>
@@ -1466,7 +1466,7 @@
   
     
       <li data-nav-id="/helm_root/helm_micro/service/" title="Test the Service" class="dd-item ">
-        <a href="../helm_root/helm_micro/service/">
+        <a href="../../../helm_root/helm_micro/service/">
         Test the Service
         
         </a>
@@ -1485,7 +1485,7 @@
   
     
       <li data-nav-id="/helm_root/helm_micro/rolling_back/" title="Rolling Back" class="dd-item ">
-        <a href="../helm_root/helm_micro/rolling_back/">
+        <a href="../../../helm_root/helm_micro/rolling_back/">
         Rolling Back
         
         </a>
@@ -1504,7 +1504,7 @@
   
     
       <li data-nav-id="/helm_root/helm_micro/cleanup/" title="Cleanup" class="dd-item ">
-        <a href="../helm_root/helm_micro/cleanup/">
+        <a href="../../../helm_root/helm_micro/cleanup/">
         Cleanup
         
         </a>
@@ -1543,7 +1543,7 @@
         
         
         ">
-      <a href="../healthchecks/">
+      <a href="../../../healthchecks/">
           Health Checks
           
       </a>
@@ -1564,7 +1564,7 @@
   
     
       <li data-nav-id="/healthchecks/livenessprobe/" title="Configure Liveness Probe" class="dd-item ">
-        <a href="../healthchecks/livenessprobe/">
+        <a href="../../../healthchecks/livenessprobe/">
         Configure Liveness Probe
         
         </a>
@@ -1583,7 +1583,7 @@
   
     
       <li data-nav-id="/healthchecks/readinessprobe/" title="Configure Readiness Probe" class="dd-item ">
-        <a href="../healthchecks/readinessprobe/">
+        <a href="../../../healthchecks/readinessprobe/">
         Configure Readiness Probe
         
         </a>
@@ -1602,7 +1602,7 @@
   
     
       <li data-nav-id="/healthchecks/cleanup/" title="Cleanup" class="dd-item ">
-        <a href="../healthchecks/cleanup/">
+        <a href="../../../healthchecks/cleanup/">
         Cleanup
         
         </a>
@@ -1632,7 +1632,7 @@
         
         
         ">
-      <a href="../scaling/">
+      <a href="../../../scaling/">
           Autoscaling our Applications and Clusters
           
       </a>
@@ -1653,7 +1653,7 @@
   
     
       <li data-nav-id="/scaling/deploy_hpa/" title="Configure Horizontal Pod AutoScaler (HPA)" class="dd-item ">
-        <a href="../scaling/deploy_hpa/">
+        <a href="../../../scaling/deploy_hpa/">
         Configure Horizontal Pod AutoScaler (HPA)
         
         </a>
@@ -1672,7 +1672,7 @@
   
     
       <li data-nav-id="/scaling/test_hpa/" title="Scale an Application with HPA" class="dd-item ">
-        <a href="../scaling/test_hpa/">
+        <a href="../../../scaling/test_hpa/">
         Scale an Application with HPA
         
         </a>
@@ -1691,7 +1691,7 @@
   
     
       <li data-nav-id="/scaling/deploy_ca/" title="Configure Cluster Autoscaler (CA)" class="dd-item ">
-        <a href="../scaling/deploy_ca/">
+        <a href="../../../scaling/deploy_ca/">
         Configure Cluster Autoscaler (CA)
         
         </a>
@@ -1710,7 +1710,7 @@
   
     
       <li data-nav-id="/scaling/test_ca/" title="Scale a Cluster with CA" class="dd-item ">
-        <a href="../scaling/test_ca/">
+        <a href="../../../scaling/test_ca/">
         Scale a Cluster with CA
         
         </a>
@@ -1729,7 +1729,7 @@
   
     
       <li data-nav-id="/scaling/cleanup/" title="Cleanup Scaling" class="dd-item ">
-        <a href="../scaling/cleanup/">
+        <a href="../../../scaling/cleanup/">
         Cleanup Scaling
         
         </a>
@@ -1759,7 +1759,7 @@
         
         
         ">
-      <a href="../codepipeline/">
+      <a href="../../../codepipeline/">
           CI/CD with CodePipeline
           
       </a>
@@ -1780,7 +1780,7 @@
   
     
       <li data-nav-id="/codepipeline/role/" title="Create IAM Role" class="dd-item ">
-        <a href="../codepipeline/role/">
+        <a href="../../../codepipeline/role/">
         Create IAM Role
         
         </a>
@@ -1799,7 +1799,7 @@
   
     
       <li data-nav-id="/codepipeline/configmap/" title="Modify aws-auth ConfigMap" class="dd-item ">
-        <a href="../codepipeline/configmap/">
+        <a href="../../../codepipeline/configmap/">
         Modify aws-auth ConfigMap
         
         </a>
@@ -1818,7 +1818,7 @@
   
     
       <li data-nav-id="/codepipeline/forksample/" title="Fork Sample Repository" class="dd-item ">
-        <a href="../codepipeline/forksample/">
+        <a href="../../../codepipeline/forksample/">
         Fork Sample Repository
         
         </a>
@@ -1837,7 +1837,7 @@
   
     
       <li data-nav-id="/codepipeline/githubcredentials/" title="GitHub Access Token" class="dd-item ">
-        <a href="../codepipeline/githubcredentials/">
+        <a href="../../../codepipeline/githubcredentials/">
         GitHub Access Token
         
         </a>
@@ -1856,7 +1856,7 @@
   
     
       <li data-nav-id="/codepipeline/codepipeline/" title="CodePipeline Setup" class="dd-item ">
-        <a href="../codepipeline/codepipeline/">
+        <a href="../../../codepipeline/codepipeline/">
         CodePipeline Setup
         
         </a>
@@ -1875,7 +1875,7 @@
   
     
       <li data-nav-id="/codepipeline/change/" title="Trigger New Release" class="dd-item ">
-        <a href="../codepipeline/change/">
+        <a href="../../../codepipeline/change/">
         Trigger New Release
         
         </a>
@@ -1894,7 +1894,7 @@
   
     
       <li data-nav-id="/codepipeline/cleanup/" title="Cleanup" class="dd-item ">
-        <a href="../codepipeline/cleanup/">
+        <a href="../../../codepipeline/cleanup/">
         Cleanup
         
         </a>
@@ -1924,7 +1924,7 @@
         
         
         ">
-      <a href="../x-ray/">
+      <a href="../../../x-ray/">
           Tracing with X-Ray
           
       </a>
@@ -1945,7 +1945,7 @@
   
     
       <li data-nav-id="/x-ray/role/" title="Modify IAM Role" class="dd-item ">
-        <a href="../x-ray/role/">
+        <a href="../../../x-ray/role/">
         Modify IAM Role
         
         </a>
@@ -1964,7 +1964,7 @@
   
     
       <li data-nav-id="/x-ray/x-ray-daemon/" title="Deploy X-Ray DaemonSet" class="dd-item ">
-        <a href="../x-ray/x-ray-daemon/">
+        <a href="../../../x-ray/x-ray-daemon/">
         Deploy X-Ray DaemonSet
         
         </a>
@@ -1983,7 +1983,7 @@
   
     
       <li data-nav-id="/x-ray/microservices/" title="Deploy Example Microservices" class="dd-item ">
-        <a href="../x-ray/microservices/">
+        <a href="../../../x-ray/microservices/">
         Deploy Example Microservices
         
         </a>
@@ -2002,7 +2002,7 @@
   
     
       <li data-nav-id="/x-ray/x-ray/" title="X-Ray Console" class="dd-item ">
-        <a href="../x-ray/x-ray/">
+        <a href="../../../x-ray/x-ray/">
         X-Ray Console
         
         </a>
@@ -2021,7 +2021,7 @@
   
     
       <li data-nav-id="/x-ray/cleanup/" title="Cleanup" class="dd-item ">
-        <a href="../x-ray/cleanup/">
+        <a href="../../../x-ray/cleanup/">
         Cleanup
         
         </a>
@@ -2051,7 +2051,7 @@
         
         
         ">
-      <a href="../batch/">
+      <a href="../../../batch/">
           Batch Processing with Argo
           
       </a>
@@ -2072,7 +2072,7 @@
   
     
       <li data-nav-id="/batch/introduction/" title="Introduction" class="dd-item ">
-        <a href="../batch/introduction/">
+        <a href="../../../batch/introduction/">
         Introduction
         
         </a>
@@ -2091,7 +2091,7 @@
   
     
       <li data-nav-id="/batch/jobs/" title="Kubernetes Jobs" class="dd-item ">
-        <a href="../batch/jobs/">
+        <a href="../../../batch/jobs/">
         Kubernetes Jobs
         
         </a>
@@ -2110,7 +2110,7 @@
   
     
       <li data-nav-id="/batch/install/" title="Install Argo CLI" class="dd-item ">
-        <a href="../batch/install/">
+        <a href="../../../batch/install/">
         Install Argo CLI
         
         </a>
@@ -2129,7 +2129,7 @@
   
     
       <li data-nav-id="/batch/deploy/" title="Deploy Argo" class="dd-item ">
-        <a href="../batch/deploy/">
+        <a href="../../../batch/deploy/">
         Deploy Argo
         
         </a>
@@ -2148,7 +2148,7 @@
   
     
       <li data-nav-id="/batch/artifact/" title="Configure Artifact Repository" class="dd-item ">
-        <a href="../batch/artifact/">
+        <a href="../../../batch/artifact/">
         Configure Artifact Repository
         
         </a>
@@ -2167,7 +2167,7 @@
   
     
       <li data-nav-id="/batch/workflow-simple/" title="Simple Batch Workflow" class="dd-item ">
-        <a href="../batch/workflow-simple/">
+        <a href="../../../batch/workflow-simple/">
         Simple Batch Workflow
         
         </a>
@@ -2186,7 +2186,7 @@
   
     
       <li data-nav-id="/batch/workflow-advanced/" title="Advanced Batch Workflow" class="dd-item ">
-        <a href="../batch/workflow-advanced/">
+        <a href="../../../batch/workflow-advanced/">
         Advanced Batch Workflow
         
         </a>
@@ -2205,7 +2205,7 @@
   
     
       <li data-nav-id="/batch/dashboard/" title="Argo Dashboard" class="dd-item ">
-        <a href="../batch/dashboard/">
+        <a href="../../../batch/dashboard/">
         Argo Dashboard
         
         </a>
@@ -2224,7 +2224,7 @@
   
     
       <li data-nav-id="/batch/cleanup/" title="Cleanup" class="dd-item ">
-        <a href="../batch/cleanup/">
+        <a href="../../../batch/cleanup/">
         Cleanup
         
         </a>
@@ -2254,7 +2254,7 @@
         
         
         ">
-      <a href="../calico/">
+      <a href="../../../calico/">
           Create Network Policies Using Calico
           
       </a>
@@ -2277,7 +2277,7 @@
   
     
       <li data-nav-id="/calico/install_calico/" title="Install Calico" class="dd-item ">
-        <a href="../calico/install_calico/">
+        <a href="../../../calico/install_calico/">
         Install Calico
         
         </a>
@@ -2300,7 +2300,7 @@
         
         
         ">
-      <a href="../calico/stars_policy_demo/">
+      <a href="../../../calico/stars_policy_demo/">
           Stars Policy Demo
           
       </a>
@@ -2321,7 +2321,7 @@
   
     
       <li data-nav-id="/calico/stars_policy_demo/create_resources/" title="Create Resources" class="dd-item ">
-        <a href="../calico/stars_policy_demo/create_resources/">
+        <a href="../../../calico/stars_policy_demo/create_resources/">
         Create Resources
         
         </a>
@@ -2340,7 +2340,7 @@
   
     
       <li data-nav-id="/calico/stars_policy_demo/default_policy/" title="Default Pod-to-Pod Communication" class="dd-item ">
-        <a href="../calico/stars_policy_demo/default_policy/">
+        <a href="../../../calico/stars_policy_demo/default_policy/">
         Default Pod-to-Pod Communication
         
         </a>
@@ -2359,7 +2359,7 @@
   
     
       <li data-nav-id="/calico/stars_policy_demo/apply_network_policies/" title="Apply Network Policies" class="dd-item ">
-        <a href="../calico/stars_policy_demo/apply_network_policies/">
+        <a href="../../../calico/stars_policy_demo/apply_network_policies/">
         Apply Network Policies
         
         </a>
@@ -2378,7 +2378,7 @@
   
     
       <li data-nav-id="/calico/stars_policy_demo/directional_traffic/" title="Allow Directional Traffic" class="dd-item ">
-        <a href="../calico/stars_policy_demo/directional_traffic/">
+        <a href="../../../calico/stars_policy_demo/directional_traffic/">
         Allow Directional Traffic
         
         </a>
@@ -2397,7 +2397,7 @@
   
     
       <li data-nav-id="/calico/stars_policy_demo/cleanup/" title="Cleanup" class="dd-item ">
-        <a href="../calico/stars_policy_demo/cleanup/">
+        <a href="../../../calico/stars_policy_demo/cleanup/">
         Cleanup
         
         </a>
@@ -2432,11 +2432,11 @@
   
     
     <li data-nav-id="/logging/" title="Logging with Elasticsearch, Fluentd, and Kibana (EFK)" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
-      <a href="../logging/">
+      <a href="../../../logging/">
           Logging with Elasticsearch, Fluentd, and Kibana (EFK)
           
       </a>
@@ -2457,7 +2457,7 @@
   
     
       <li data-nav-id="/logging/prereqs/" title="Configure IAM Policy for Worker Nodes" class="dd-item ">
-        <a href="../logging/prereqs/">
+        <a href="../../../logging/prereqs/">
         Configure IAM Policy for Worker Nodes
         
         </a>
@@ -2476,7 +2476,7 @@
   
     
       <li data-nav-id="/logging/setup_es/" title="Provision an Elasticsearch Cluster" class="dd-item ">
-        <a href="../logging/setup_es/">
+        <a href="../../../logging/setup_es/">
         Provision an Elasticsearch Cluster
         
         </a>
@@ -2495,7 +2495,7 @@
   
     
       <li data-nav-id="/logging/deploy/" title="Deploy Fluentd" class="dd-item ">
-        <a href="../logging/deploy/">
+        <a href="../../../logging/deploy/">
         Deploy Fluentd
         
         </a>
@@ -2514,7 +2514,7 @@
   
     
       <li data-nav-id="/logging/configurecwl/" title="Configure CloudWatch Logs and Kibana" class="dd-item ">
-        <a href="../logging/configurecwl/">
+        <a href="../../../logging/configurecwl/">
         Configure CloudWatch Logs and Kibana
         
         </a>
@@ -2533,7 +2533,7 @@
   
     
       <li data-nav-id="/logging/cleanup/" title="Cleanup Logging" class="dd-item ">
-        <a href="../logging/cleanup/">
+        <a href="../../../logging/cleanup/">
         Cleanup Logging
         
         </a>
@@ -2563,7 +2563,7 @@
         
         
         ">
-      <a href="../monitoring/">
+      <a href="../../../monitoring/">
           Monitoring using Prometheus and Grafana
           
       </a>
@@ -2584,7 +2584,7 @@
   
     
       <li data-nav-id="/monitoring/prereqs/" title="Prereqs" class="dd-item ">
-        <a href="../monitoring/prereqs/">
+        <a href="../../../monitoring/prereqs/">
         Prereqs
         
         </a>
@@ -2603,7 +2603,7 @@
   
     
       <li data-nav-id="/monitoring/deploy-prometheus/" title="Deploy Prometheus" class="dd-item ">
-        <a href="../monitoring/deploy-prometheus/">
+        <a href="../../../monitoring/deploy-prometheus/">
         Deploy Prometheus
         
         </a>
@@ -2622,7 +2622,7 @@
   
     
       <li data-nav-id="/monitoring/deploy-grafana/" title="Deploy Grafana" class="dd-item ">
-        <a href="../monitoring/deploy-grafana/">
+        <a href="../../../monitoring/deploy-grafana/">
         Deploy Grafana
         
         </a>
@@ -2641,7 +2641,7 @@
   
     
       <li data-nav-id="/monitoring/dashboards/" title="Dashboards" class="dd-item ">
-        <a href="../monitoring/dashboards/">
+        <a href="../../../monitoring/dashboards/">
         Dashboards
         
         </a>
@@ -2660,7 +2660,7 @@
   
     
       <li data-nav-id="/monitoring/cleanup/" title="Cleanup" class="dd-item ">
-        <a href="../monitoring/cleanup/">
+        <a href="../../../monitoring/cleanup/">
         Cleanup
         
         </a>
@@ -2690,7 +2690,7 @@
         
         
         ">
-      <a href="../servicemesh_with_istio/">
+      <a href="../../../servicemesh_with_istio/">
           Service Mesh with Istio
           
       </a>
@@ -2711,7 +2711,7 @@
   
     
       <li data-nav-id="/servicemesh_with_istio/introduction/" title="Introduction" class="dd-item ">
-        <a href="../servicemesh_with_istio/introduction/">
+        <a href="../../../servicemesh_with_istio/introduction/">
         Introduction
         
         </a>
@@ -2730,7 +2730,7 @@
   
     
       <li data-nav-id="/servicemesh_with_istio/download/" title="Download and Install Istio CLI" class="dd-item ">
-        <a href="../servicemesh_with_istio/download/">
+        <a href="../../../servicemesh_with_istio/download/">
         Download and Install Istio CLI
         
         </a>
@@ -2749,7 +2749,7 @@
   
     
       <li data-nav-id="/servicemesh_with_istio/install/" title="Install Istio" class="dd-item ">
-        <a href="../servicemesh_with_istio/install/">
+        <a href="../../../servicemesh_with_istio/install/">
         Install Istio
         
         </a>
@@ -2768,7 +2768,7 @@
   
     
       <li data-nav-id="/servicemesh_with_istio/deploy/" title="Deploy Sample Apps" class="dd-item ">
-        <a href="../servicemesh_with_istio/deploy/">
+        <a href="../../../servicemesh_with_istio/deploy/">
         Deploy Sample Apps
         
         </a>
@@ -2787,7 +2787,7 @@
   
     
       <li data-nav-id="/servicemesh_with_istio/routing/" title="Intelligent Routing" class="dd-item ">
-        <a href="../servicemesh_with_istio/routing/">
+        <a href="../../../servicemesh_with_istio/routing/">
         Intelligent Routing
         
         </a>
@@ -2806,7 +2806,7 @@
   
     
       <li data-nav-id="/servicemesh_with_istio/visualize/" title="Monitor &amp; Visualize" class="dd-item ">
-        <a href="../servicemesh_with_istio/visualize/">
+        <a href="../../../servicemesh_with_istio/visualize/">
         Monitor &amp; Visualize
         
         </a>
@@ -2825,7 +2825,7 @@
   
     
       <li data-nav-id="/servicemesh_with_istio/cleanup/" title="Cleanup" class="dd-item ">
-        <a href="../servicemesh_with_istio/cleanup/">
+        <a href="../../../servicemesh_with_istio/cleanup/">
         Cleanup
         
         </a>
@@ -2855,7 +2855,7 @@
         
         
         ">
-      <a href="../servicemesh_with_appmesh/">
+      <a href="../../../servicemesh_with_appmesh/">
           Service Mesh with AWS App Mesh
           
       </a>
@@ -2876,7 +2876,7 @@
   
     
       <li data-nav-id="/servicemesh_with_appmesh/components/" title="Components" class="dd-item ">
-        <a href="../servicemesh_with_appmesh/components/">
+        <a href="../../../servicemesh_with_appmesh/components/">
         Components
         
         </a>
@@ -2895,7 +2895,7 @@
   
     
       <li data-nav-id="/servicemesh_with_appmesh/create_mesh/" title="Create the App Mesh" class="dd-item ">
-        <a href="../servicemesh_with_appmesh/create_mesh/">
+        <a href="../../../servicemesh_with_appmesh/create_mesh/">
         Create the App Mesh
         
         </a>
@@ -2914,7 +2914,7 @@
   
     
       <li data-nav-id="/servicemesh_with_appmesh/create_virtual_nodes/" title="Create Virtual Nodes" class="dd-item ">
-        <a href="../servicemesh_with_appmesh/create_virtual_nodes/">
+        <a href="../../../servicemesh_with_appmesh/create_virtual_nodes/">
         Create Virtual Nodes
         
         </a>
@@ -2933,7 +2933,7 @@
   
     
       <li data-nav-id="/servicemesh_with_appmesh/create_virtual_routers/" title="Create Virtual Routers and Routes" class="dd-item ">
-        <a href="../servicemesh_with_appmesh/create_virtual_routers/">
+        <a href="../../../servicemesh_with_appmesh/create_virtual_routers/">
         Create Virtual Routers and Routes
         
         </a>
@@ -2952,7 +2952,7 @@
   
     
       <li data-nav-id="/servicemesh_with_appmesh/create_k8s_app/" title="Create the k8s app" class="dd-item ">
-        <a href="../servicemesh_with_appmesh/create_k8s_app/">
+        <a href="../../../servicemesh_with_appmesh/create_k8s_app/">
         Create the k8s app
         
         </a>
@@ -2971,7 +2971,7 @@
   
     
       <li data-nav-id="/servicemesh_with_appmesh/testing_the_app_mesh/" title="Test the App on App Mesh" class="dd-item ">
-        <a href="../servicemesh_with_appmesh/testing_the_app_mesh/">
+        <a href="../../../servicemesh_with_appmesh/testing_the_app_mesh/">
         Test the App on App Mesh
         
         </a>
@@ -2990,7 +2990,7 @@
   
     
       <li data-nav-id="/servicemesh_with_appmesh/cleanup/" title="Clean Up" class="dd-item ">
-        <a href="../servicemesh_with_appmesh/cleanup/">
+        <a href="../../../servicemesh_with_appmesh/cleanup/">
         Clean Up
         
         </a>
@@ -3020,7 +3020,7 @@
         
         
         ">
-      <a href="../advanced-networking/">
+      <a href="../../../advanced-networking/">
           Advanced VPC Networking with EKS
           
       </a>
@@ -3047,7 +3047,7 @@
         
         
         ">
-      <a href="../advanced-networking/secondary_cidr/">
+      <a href="../../../advanced-networking/secondary_cidr/">
           Using Secondary CIDRs with EKS
           
       </a>
@@ -3068,7 +3068,7 @@
   
     
       <li data-nav-id="/advanced-networking/secondary_cidr/prerequisites/" title="Prerequisites" class="dd-item ">
-        <a href="../advanced-networking/secondary_cidr/prerequisites/">
+        <a href="../../../advanced-networking/secondary_cidr/prerequisites/">
         Prerequisites
         
         </a>
@@ -3087,7 +3087,7 @@
   
     
       <li data-nav-id="/advanced-networking/secondary_cidr/configure-cni/" title="Configure CNI" class="dd-item ">
-        <a href="../advanced-networking/secondary_cidr/configure-cni/">
+        <a href="../../../advanced-networking/secondary_cidr/configure-cni/">
         Configure CNI
         
         </a>
@@ -3106,7 +3106,7 @@
   
     
       <li data-nav-id="/advanced-networking/secondary_cidr/eniconfig_crd/" title="Create CRDs" class="dd-item ">
-        <a href="../advanced-networking/secondary_cidr/eniconfig_crd/">
+        <a href="../../../advanced-networking/secondary_cidr/eniconfig_crd/">
         Create CRDs
         
         </a>
@@ -3125,7 +3125,7 @@
   
     
       <li data-nav-id="/advanced-networking/secondary_cidr/test_networking/" title="Test Networking" class="dd-item ">
-        <a href="../advanced-networking/secondary_cidr/test_networking/">
+        <a href="../../../advanced-networking/secondary_cidr/test_networking/">
         Test Networking
         
         </a>
@@ -3144,7 +3144,7 @@
   
     
       <li data-nav-id="/advanced-networking/secondary_cidr/cleanup/" title="Cleanup" class="dd-item ">
-        <a href="../advanced-networking/secondary_cidr/cleanup/">
+        <a href="../../../advanced-networking/secondary_cidr/cleanup/">
         Cleanup
         
         </a>
@@ -3183,7 +3183,7 @@
         
         
         ">
-      <a href="../statefulset/">
+      <a href="../../../statefulset/">
           Stateful containers using StatefulSets
           
       </a>
@@ -3204,7 +3204,7 @@
   
     
       <li data-nav-id="/statefulset/storageclass/" title="Define Storageclass" class="dd-item ">
-        <a href="../statefulset/storageclass/">
+        <a href="../../../statefulset/storageclass/">
         Define Storageclass
         
         </a>
@@ -3223,7 +3223,7 @@
   
     
       <li data-nav-id="/statefulset/configmap/" title="Create ConfigMap" class="dd-item ">
-        <a href="../statefulset/configmap/">
+        <a href="../../../statefulset/configmap/">
         Create ConfigMap
         
         </a>
@@ -3242,7 +3242,7 @@
   
     
       <li data-nav-id="/statefulset/services/" title="Create Services" class="dd-item ">
-        <a href="../statefulset/services/">
+        <a href="../../../statefulset/services/">
         Create Services
         
         </a>
@@ -3261,7 +3261,7 @@
   
     
       <li data-nav-id="/statefulset/statefulset/" title="Create StatefulSet" class="dd-item ">
-        <a href="../statefulset/statefulset/">
+        <a href="../../../statefulset/statefulset/">
         Create StatefulSet
         
         </a>
@@ -3280,7 +3280,7 @@
   
     
       <li data-nav-id="/statefulset/testmysql/" title="Test MySQL" class="dd-item ">
-        <a href="../statefulset/testmysql/">
+        <a href="../../../statefulset/testmysql/">
         Test MySQL
         
         </a>
@@ -3299,7 +3299,7 @@
   
     
       <li data-nav-id="/statefulset/testfailure/" title="Test Failure" class="dd-item ">
-        <a href="../statefulset/testfailure/">
+        <a href="../../../statefulset/testfailure/">
         Test Failure
         
         </a>
@@ -3318,7 +3318,7 @@
   
     
       <li data-nav-id="/statefulset/testscaling/" title="Test Scaling" class="dd-item ">
-        <a href="../statefulset/testscaling/">
+        <a href="../../../statefulset/testscaling/">
         Test Scaling
         
         </a>
@@ -3337,7 +3337,7 @@
   
     
       <li data-nav-id="/statefulset/cleanup/" title="Cleanup" class="dd-item ">
-        <a href="../statefulset/cleanup/">
+        <a href="../../../statefulset/cleanup/">
         Cleanup
         
         </a>
@@ -3367,7 +3367,7 @@
         
         
         ">
-      <a href="../cleanup/">
+      <a href="../../../cleanup/">
           Cleanup
           
       </a>
@@ -3388,7 +3388,7 @@
   
     
       <li data-nav-id="/cleanup/undeploy/" title="Undeploy the applications" class="dd-item ">
-        <a href="../cleanup/undeploy/">
+        <a href="../../../cleanup/undeploy/">
         Undeploy the applications
         
         </a>
@@ -3407,7 +3407,7 @@
   
     
       <li data-nav-id="/cleanup/eksctl/" title="Delete the EKSCTL Cluster" class="dd-item ">
-        <a href="../cleanup/eksctl/">
+        <a href="../../../cleanup/eksctl/">
         Delete the EKSCTL Cluster
         
         </a>
@@ -3426,7 +3426,7 @@
   
     
       <li data-nav-id="/cleanup/workspace/" title="Cleanup the Workspace" class="dd-item ">
-        <a href="../cleanup/workspace/">
+        <a href="../../../cleanup/workspace/">
         Cleanup the Workspace
         
         </a>
@@ -3456,7 +3456,7 @@
         
         
         ">
-      <a href="../conclusion/">
+      <a href="../../../conclusion/">
           Conclusion
           
       </a>
@@ -3477,7 +3477,7 @@
   
     
       <li data-nav-id="/conclusion/conclusion/" title="What Have We Accomplished" class="dd-item ">
-        <a href="../conclusion/conclusion/">
+        <a href="../../../conclusion/conclusion/">
         What Have We Accomplished
         
         </a>
@@ -3496,7 +3496,7 @@
   
     
       <li data-nav-id="/conclusion/survey/" title="Let us know what you think!" class="dd-item ">
-        <a href="../conclusion/survey/">
+        <a href="../../../conclusion/survey/">
         Let us know what you think!
         
         </a>
@@ -3526,7 +3526,7 @@
         
         
         ">
-      <a href="../tabs-example/">
+      <a href="../../../tabs-example/">
           
           
       </a>
@@ -3562,11 +3562,11 @@
         <ul>
           
               <li> 
-                  <a class="padding" href="../more_resources"><i class='fas fa-bookmark'></i> More Resources</a>
+                  <a class="padding" href="../../../more_resources"><i class='fas fa-bookmark'></i> More Resources</a>
               </li>
           
               <li> 
-                  <a class="padding" href="../authors"><i class='fas fa-users'></i> Authors</a>
+                  <a class="padding" href="../../../authors"><i class='fas fa-users'></i> Authors</a>
               </li>
           
               <li> 
@@ -3624,7 +3624,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='' href="https://github.com/aws-samples/eks-workshop/edit/master/content/logging/_index.md" target="blank">
+                    <a class="github-link" title='' href="https://github.com/aws-samples/eks-workshop/edit/master/content/prerequisites/self_paced/ap-southeast-1.md" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text"></span>
                     </a>
@@ -3647,7 +3647,13 @@
             
           
           
-            <a href='../'>Amazon EKS 워크샵</a> > Logging with Elasticsearch, Fluentd, and Kibana (EFK)
+            
+            
+          
+          
+            <a href='../../../'>Amazon EKS 워크샵</a> > <a href='../../../prerequisites/'>워크샵 준비하기</a> > Singapore
+          
+         
           
          
           
@@ -3660,35 +3666,22 @@
             
 
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>Singapore</h1>
           
 
         
 
 
-
-
-<h1 id="implement-logging-with-efk">Implement Logging with EFK</h1>
-
-<p>In this Chapter, we will deploy a common Kubernetes logging pattern which consists of the following:</p>
-
-<ul>
-<li><a href="https://www.fluentd.org/" target="_blank">Fluentd</a> is an open source data collector providing a unified logging layer, supported by 500+ plugins connecting to many types of systems.</li>
-<li><a href="https://www.elastic.co/products/elasticsearch" target="_blank">Elasticsearch</a> is a distributed, RESTful search and analytics engine.</li>
-<li><a href="https://www.elastic.co/products/kibana" target="_blank">Kibana</a> lets you visualize your Elasticsearch data.</li>
-</ul>
-
-<p>Together, Fluentd, Elasticsearch and Kibana is also known as “EFK stack”. Fluentd will forward logs from the individual instances in the cluster to a centralized logging backend (CloudWatch Logs) where they are combined for higher-level reporting using ElasticSearch and Kibana.</p>
+<p>Cloud9 환경 생성하기: <a href="https://ap-southeast-1.console.aws.amazon.com/cloud9/home?region=ap-southeast-1" target="_blank">https://ap-southeast-1.console.aws.amazon.com/cloud9/home?region=ap-southeast-1</a></p>
 
 
 <footer class=" footline" >
 	
 </footer>
 
-        
-            </div> 
+
         
         </div>
         
@@ -4013,6 +4006,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -4025,6 +4019,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -5477,7 +5474,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -5490,9 +5486,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -6306,10 +6299,10 @@
 
 
         
-            <a class="nav nav-prev" href="../calico/stars_policy_demo/cleanup/" title="Cleanup"> <i class="fas fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="../../../introduction/eks/stay_tuned/" title="Amazon EKS!"> <i class="fas fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="../logging/prereqs/" title="Configure IAM Policy for Worker Nodes" style="margin-right: 0px;"><i class="fas fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="../../../prerequisites/self_paced/account/" title="AWS 계정 만들기" style="margin-right: 0px;"><i class="fas fa-chevron-right"></i></a>
         
     </div>
 
@@ -6318,20 +6311,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1553010597"></script>
-    <script src="../js/perfect-scrollbar.min.js?1553010597"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1553010597"></script>
-    <script src="../js/jquery.sticky.js?1553010597"></script>
-    <script src="../js/featherlight.min.js?1553010597"></script>
-    <script src="../js/html5shiv-printshiv.min.js?1553010597"></script>
-    <script src="../js/highlight.pack.js?1553010597"></script>
+    <script src="../../../js/clipboard.min.js?1553010598"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1553010598"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1553010598"></script>
+    <script src="../../../js/jquery.sticky.js?1553010598"></script>
+    <script src="../../../js/featherlight.min.js?1553010598"></script>
+    <script src="../../../js/html5shiv-printshiv.min.js?1553010598"></script>
+    <script src="../../../js/highlight.pack.js?1553010598"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom.71422.js?1553010597"></script>
-    <script src="../js/learn.js?1553010597"></script>
-    <script src="../js/hugo-learn.js?1553010597"></script>
+    <script src="../../../js/modernizr.custom.71422.js?1553010598"></script>
+    <script src="../../../js/learn.js?1553010598"></script>
+    <script src="../../../js/hugo-learn.js?1553010598"></script>
 
-    <link href="../mermaid/mermaid.css?1553010597" type="text/css" rel="stylesheet" />
-    <script src="../mermaid/mermaid.min.js?1553010597"></script>
+    <link href="../../../mermaid/mermaid.css?1553010598" type="text/css" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.min.js?1553010598"></script>
     <script>
 	var config = {
         startOnLoad:true,
@@ -6358,3 +6351,4 @@ if (!doNotTrack) {
 
   </body>
 </html>
+

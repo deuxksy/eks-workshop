@@ -13,12 +13,12 @@
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2018-11-08T08:30:11-07:00</lastmod>
+    <loc>/prerequisites/self_paced/account/</loc>
   </url>
   
   <url>
-    <loc>/prerequisites/self_paced/account/</loc>
+    <loc>/</loc>
+    <lastmod>2018-11-08T08:30:11-07:00</lastmod>
   </url>
   
   <url>
@@ -142,11 +142,12 @@
   </url>
   
   <url>
-    <loc>/prerequisites/self_paced/workspace/</loc>
+    <loc>/x-ray/role/</loc>
   </url>
   
   <url>
-    <loc>/x-ray/role/</loc>
+    <loc>/advanced-networking/secondary_cidr/</loc>
+    <lastmod>2019-02-08T00:35:29-05:00</lastmod>
   </url>
   
   <url>
@@ -154,8 +155,7 @@
   </url>
   
   <url>
-    <loc>/advanced-networking/secondary_cidr/</loc>
-    <lastmod>2019-02-08T00:35:29-05:00</lastmod>
+    <loc>/prerequisites/self_paced/workspace/</loc>
   </url>
   
   <url>
@@ -816,6 +816,10 @@
   
   <url>
     <loc>/prerequisites/self_paced/us-west-2/</loc>
+  </url>
+  
+  <url>
+    <loc>/prerequisites/self_paced/ap-southeast-1/</loc>
   </url>
   
   <url>

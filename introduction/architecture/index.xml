@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>쿠버네티스 아키텍처 on Amazon EKS Workshop</title>
+    <title>쿠버네티스 아키텍처 on Amazon EKS 워크샵</title>
     <link>/introduction/architecture/</link>
-    <description>Recent content in 쿠버네티스 아키텍처 on Amazon EKS Workshop</description>
+    <description>Recent content in 쿠버네티스 아키텍처 on Amazon EKS 워크샵</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
     <lastBuildDate>Wed, 03 Oct 2018 10:17:52 -0700</lastBuildDate>

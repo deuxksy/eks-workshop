@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Service Mesh with Istio on Amazon EKS Workshop</title>
+    <title>Service Mesh with Istio on Amazon EKS 워크샵</title>
     <link>/servicemesh_with_istio/</link>
-    <description>Recent content in Service Mesh with Istio on Amazon EKS Workshop</description>
+    <description>Recent content in Service Mesh with Istio on Amazon EKS 워크샵</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
     <lastBuildDate>Tue, 13 Nov 2018 16:32:30 +0900</lastBuildDate>

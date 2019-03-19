@@ -9,30 +9,30 @@
     <meta property="og:image" content="https://eksworkshop.com/images/3-service-animated.gif" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="generator" content="Hugo 0.45.1" />
-    <meta name="description" content="Amazon EKS Workshop">
+    <meta name="description" content="Amazon EKS 워크샵">
 <meta name="author" content="Brent Langston">
 
     <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="../../images/favicon.ico" type="image/x-icon" />
 
-    <title>Create an SSH key :: Amazon EKS Workshop</title>
+    <title>SSH 키 생성하기 :: Amazon EKS 워크샵</title>
 
     
-    <link href="../../css/nucleus.css?1553006293" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1553006293" rel="stylesheet">
-    <link href="../../css/hybrid.css?1553006293" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1553006293" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1553006293" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1553006293" rel="stylesheet">
-    <link href="../../css/theme.css?1553006293" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1553006293" rel="stylesheet">
-    <link href="../../css/jquery-ui.min.css?1553006293" rel="stylesheet">
+    <link href="../../css/nucleus.css?1553010596" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1553010596" rel="stylesheet">
+    <link href="../../css/hybrid.css?1553010596" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1553010596" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1553010596" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1553010596" rel="stylesheet">
+    <link href="../../css/theme.css?1553010596" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1553010596" rel="stylesheet">
+    <link href="../../css/jquery-ui.min.css?1553010596" rel="stylesheet">
     
-      <link href="../../css/theme-mine.css?1553006293" rel="stylesheet">
+      <link href="../../css/theme-mine.css?1553010596" rel="stylesheet">
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1553006293"></script>
-    <script src="../../js/jquery-ui-1.12.1.min.js?1553006293"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1553010596"></script>
+    <script src="../../js/jquery-ui-1.12.1.min.js?1553010596"></script>
 
 
     <style type="text/css">
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1553006293"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1553006293"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1553010596"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1553010596"></script>
 <script type="text/javascript">
     
         var baseurl = '\/';
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1553006293"></script>
+<script type="text/javascript" src="../../js/search.js?1553010596"></script>
 
     
   </div>
@@ -489,13 +489,13 @@
  
   
     
-    <li data-nav-id="/prerequisites/" title="Start the workshop..." class="dd-item 
+    <li data-nav-id="/prerequisites/" title="워크샵 준비하기" class="dd-item 
         parent
         
         
         ">
       <a href="../../prerequisites/">
-          Start the workshop...
+          워크샵 준비하기
           
       </a>
       
@@ -514,9 +514,9 @@
  
   
     
-      <li data-nav-id="/prerequisites/self_paced/account/" title="Create an AWS account" class="dd-item ">
+      <li data-nav-id="/prerequisites/self_paced/account/" title="AWS 계정 만들기" class="dd-item ">
         <a href="../../prerequisites/self_paced/account/">
-        Create an AWS account
+        AWS 계정 만들기
         
         </a>
     </li>
@@ -533,9 +533,9 @@
  
   
     
-      <li data-nav-id="/prerequisites/self_paced/workspace/" title="Create a Workspace" class="dd-item ">
+      <li data-nav-id="/prerequisites/self_paced/workspace/" title="워크스페이스 생성하기" class="dd-item ">
         <a href="../../prerequisites/self_paced/workspace/">
-        Create a Workspace
+        워크스페이스 생성하기
         
         </a>
     </li>
@@ -552,9 +552,9 @@
  
   
     
-      <li data-nav-id="/prerequisites/sshkey/" title="Create an SSH key" class="dd-item active">
+      <li data-nav-id="/prerequisites/sshkey/" title="SSH 키 생성하기" class="dd-item active">
         <a href="../../prerequisites/sshkey/">
-        Create an SSH key
+        SSH 키 생성하기
         
         </a>
     </li>
@@ -571,9 +571,9 @@
  
   
     
-      <li data-nav-id="/prerequisites/k8stools/" title="Install Kubernetes Tools" class="dd-item ">
+      <li data-nav-id="/prerequisites/k8stools/" title="쿠버네티스 도구 설치" class="dd-item ">
         <a href="../../prerequisites/k8stools/">
-        Install Kubernetes Tools
+        쿠버네티스 도구 설치
         
         </a>
     </li>
@@ -590,9 +590,9 @@
  
   
     
-      <li data-nav-id="/prerequisites/clone/" title="Clone the Service Repos" class="dd-item ">
+      <li data-nav-id="/prerequisites/clone/" title="실습 서비스 레포지토리 클론" class="dd-item ">
         <a href="../../prerequisites/clone/">
-        Clone the Service Repos
+        실습 서비스 레포지토리 클론
         
         </a>
     </li>
@@ -609,9 +609,9 @@
  
   
     
-      <li data-nav-id="/prerequisites/self_paced/iamrole/" title="Create an IAM role for your Workspace" class="dd-item ">
+      <li data-nav-id="/prerequisites/self_paced/iamrole/" title="워크스페이스를 위한 IAM 역할 생성" class="dd-item ">
         <a href="../../prerequisites/self_paced/iamrole/">
-        Create an IAM role for your Workspace
+        워크스페이스를 위한 IAM 역할 생성
         
         </a>
     </li>
@@ -628,9 +628,9 @@
  
   
     
-      <li data-nav-id="/prerequisites/self_paced/ec2instance/" title="Attach the IAM role to your Workspace" class="dd-item ">
+      <li data-nav-id="/prerequisites/self_paced/ec2instance/" title="워크스페이스에 IAM 역할 부여하기" class="dd-item ">
         <a href="../../prerequisites/self_paced/ec2instance/">
-        Attach the IAM role to your Workspace
+        워크스페이스에 IAM 역할 부여하기
         
         </a>
     </li>
@@ -647,9 +647,9 @@
  
   
     
-      <li data-nav-id="/prerequisites/workspaceiam/" title="Update IAM settings for your Workspace" class="dd-item ">
+      <li data-nav-id="/prerequisites/workspaceiam/" title="워크스페이스의 IAM 설정 업데이트" class="dd-item ">
         <a href="../../prerequisites/workspaceiam/">
-        Update IAM settings for your Workspace
+        워크스페이스의 IAM 설정 업데이트
         
         </a>
     </li>
@@ -657,6 +657,9 @@
   
  
 
+            
+          
+             
             
           
              
@@ -3650,7 +3653,7 @@
             
           
           
-            <a href='../../'>Amazon EKS Workshop</a> > <a href='../../prerequisites/'>Start the workshop...</a> > Create an SSH key
+            <a href='../../'>Amazon EKS 워크샵</a> > <a href='../../prerequisites/'>워크샵 준비하기</a> > SSH 키 생성하기
           
          
           
@@ -3674,26 +3677,27 @@
         
         <div id="body-inner">
           
-            <h1>Create an SSH key</h1>
+            <h1>SSH 키 생성하기</h1>
           
 
         
 
 
-<div class="notices info" ><p>Starting from here, when you see command to be entered such as below, you will enter these commands into Cloud9 IDE. You can use the <strong>Copy to clipboard</strong> feature (right hand upper corner) to simply copy and paste into Cloud9. In order to paste, you can use Ctrl + V for Windows or Command + V for Mac.</p>
+<div class="notices info" ><p>여기에서부터, 아래처럼 박스에 보이는 명령어들을 Cloud9 IDE에 입력하게 됩니다.
+** 클립 보드에 복사 ** 기능 (오른쪽 위 모서리)을 사용하여 간단하게 복사하여 Cloud9에 붙여 넣을 수 있습니다. 붙이기 위해서는 Windows의 경우 Ctrl + V를, Mac의 경우 Command + V를 사용할 수 있습니다.</p>
 </div>
 
 
-<p>Please run this command to generate SSH Key in Cloud9. This key will be used on the worker node instances to allow ssh access if necessary.</p>
+<p>Cloud9에서 SSH 키를 생성하려면 아래 명령을 실행하세요. 필요한 경우 이 키는 작업자 노드 인스턴스에서 ssh 액세스를 허용하는 데 사용됩니다.</p>
 
 <pre><code class="language-bash">ssh-keygen
 </code></pre>
 
-<p><div class="notices tip" ><p>Press <code>enter</code> 3 times to take the default choices</p>
+<p><div class="notices tip" ><p><code>enter</code>키를 세 차례 누르게 되면 기본 옵션으로 키가 생성됩니다.</p>
 </div>
 </p>
 
-<p>Upload the public key to your EC2 region:</p>
+<p>공개 키를 사용중인 EC2 리전에 업로드하세요:</p>
 
 <pre><code class="language-bash">aws ec2 import-key-pair --key-name &quot;eksworkshop&quot; --public-key-material file://~/.ssh/id_rsa.pub
 </code></pre>
@@ -4187,6 +4191,11 @@
             
         
                     
+                        
+            
+            
+        
+                    
             
         
                     
@@ -6320,10 +6329,10 @@
 
 
         
-            <a class="nav nav-prev" href="../../prerequisites/self_paced/workspace/" title="Create a Workspace"> <i class="fas fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="../../prerequisites/self_paced/workspace/" title="워크스페이스 생성하기"> <i class="fas fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="../../prerequisites/k8stools/" title="Install Kubernetes Tools" style="margin-right: 0px;"><i class="fas fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="../../prerequisites/k8stools/" title="쿠버네티스 도구 설치" style="margin-right: 0px;"><i class="fas fa-chevron-right"></i></a>
         
     </div>
 
@@ -6332,20 +6341,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1553006293"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1553006293"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1553006293"></script>
-    <script src="../../js/jquery.sticky.js?1553006293"></script>
-    <script src="../../js/featherlight.min.js?1553006293"></script>
-    <script src="../../js/html5shiv-printshiv.min.js?1553006293"></script>
-    <script src="../../js/highlight.pack.js?1553006293"></script>
+    <script src="../../js/clipboard.min.js?1553010596"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1553010596"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1553010596"></script>
+    <script src="../../js/jquery.sticky.js?1553010596"></script>
+    <script src="../../js/featherlight.min.js?1553010596"></script>
+    <script src="../../js/html5shiv-printshiv.min.js?1553010596"></script>
+    <script src="../../js/highlight.pack.js?1553010596"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom.71422.js?1553006293"></script>
-    <script src="../../js/learn.js?1553006293"></script>
-    <script src="../../js/hugo-learn.js?1553006293"></script>
+    <script src="../../js/modernizr.custom.71422.js?1553010596"></script>
+    <script src="../../js/learn.js?1553010596"></script>
+    <script src="../../js/hugo-learn.js?1553010596"></script>
 
-    <link href="../../mermaid/mermaid.css?1553006293" type="text/css" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.min.js?1553006293"></script>
+    <link href="../../mermaid/mermaid.css?1553010596" type="text/css" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.min.js?1553010596"></script>
     <script>
 	var config = {
         startOnLoad:true,
