@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>EKS Cluster Creation Workflow</title>
+      <title>EKS 클러스터 생성 작업 순서</title>
       <link>/introduction/eks/eks_customers/</link>
       <pubDate>Wed, 03 Oct 2018 10:23:24 -0700</pubDate>
       
@@ -21,7 +21,7 @@
     </item>
     
     <item>
-      <title>What happens when you create your EKS cluster</title>
+      <title>EKS 클러스터를 생성할 때 무슨 일이 일어날까</title>
       <link>/introduction/eks/eks_control_plane/</link>
       <pubDate>Wed, 03 Oct 2018 10:23:24 -0700</pubDate>
       
@@ -30,7 +30,7 @@
     </item>
     
     <item>
-      <title>EKS Architecture for Control plane and Worker node communication</title>
+      <title>EKS 콘트롤 플레인과 워커 노드간의 통신 아키텍처</title>
       <link>/introduction/eks/eks_high_architecture/</link>
       <pubDate>Wed, 03 Oct 2018 10:23:24 -0700</pubDate>
       
@@ -39,12 +39,12 @@
     </item>
     
     <item>
-      <title>High Level</title>
+      <title>클러스터 관리 도구</title>
       <link>/introduction/eks/eks_high_level/</link>
       <pubDate>Wed, 03 Oct 2018 10:23:24 -0700</pubDate>
       
       <guid>/introduction/eks/eks_high_level/</guid>
-      <description>Once your EKS cluster is ready, you get an API endpoint and you&amp;rsquo;d use Kubectl, community developed tool to interact with your cluster.</description>
+      <description>귀하의 EKS 클러스터가 준비되면, API 엔드포인트를 얻을 수 있고 클러스터와 상호작용하도록 커뮤니티에서 개발한 도구인 kubectl을 사용할 수 있습니다.</description>
     </item>
     
     <item>
@@ -53,8 +53,8 @@
       <pubDate>Wed, 03 Oct 2018 10:23:24 -0700</pubDate>
       
       <guid>/introduction/eks/stay_tuned/</guid>
-      <description>Stay tuned as we continue the journey with EKS in the next module!
-Always ask questions! Feel free to ask them in person during this workshop, or any time on the official Kubernetes Slack channel accessible via http://slack.k8s.io/.</description>
+      <description>다음 모듈에서 EKS로 여행을 진행하며 계속 지켜봐주십시오!
+질문은 늘 열려있습니다! 이 워크숍에서나 공식 쿠버네티스 슬랙 이나 AWSKRUG 슬랙에서 언제든지 직접 물어보십시오.</description>
     </item>
     
   </channel>

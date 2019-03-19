@@ -1019,7 +1019,7 @@
 	"title": "Amazon EKS",
 	"tags": [],
 	"description": "",
-	"content": "In this section, we\u0026rsquo;ll cover the following topics:\n EKS Cluster Creation Workflow   What happens when you create your EKS cluster   EKS Architecture for Control plane and Worker node communication   High Level   Amazon EKS!   "
+	"content": "이번 섹션에서는 다음 주제를 다룹니다.\n EKS 클러스터 생성 작업 순서   EKS 클러스터를 생성할 때 무슨 일이 일어날까   EKS 콘트롤 플레인과 워커 노드간의 통신 아키텍처   클러스터 관리 도구   Amazon EKS!   "
 },
 {
 	"uri": "/deploy/cleanup/",
@@ -1065,38 +1065,38 @@
 },
 {
 	"uri": "/introduction/eks/eks_customers/",
-	"title": "EKS Cluster Creation Workflow",
+	"title": "EKS 클러스터 생성 작업 순서",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
 	"uri": "/introduction/eks/eks_control_plane/",
-	"title": "What happens when you create your EKS cluster",
+	"title": "EKS 클러스터를 생성할 때 무슨 일이 일어날까",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
 	"uri": "/introduction/eks/eks_high_architecture/",
-	"title": "EKS Architecture for Control plane and Worker node communication",
+	"title": "EKS 콘트롤 플레인과 워커 노드간의 통신 아키텍처",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
 	"uri": "/introduction/eks/eks_high_level/",
-	"title": "High Level",
+	"title": "클러스터 관리 도구",
 	"tags": [],
 	"description": "",
-	"content": "Once your EKS cluster is ready, you get an API endpoint and you\u0026rsquo;d use Kubectl, community developed tool to interact with your cluster.\n"
+	"content": "귀하의 EKS 클러스터가 준비되면, API 엔드포인트를 얻을 수 있고 클러스터와 상호작용하도록 커뮤니티에서 개발한 도구인 kubectl을 사용할 수 있습니다.\n"
 },
 {
 	"uri": "/introduction/eks/stay_tuned/",
 	"title": "Amazon EKS!",
 	"tags": [],
 	"description": "",
-	"content": "Stay tuned as we continue the journey with EKS in the next module!\nAlways ask questions! Feel free to ask them in person during this workshop, or any time on the official Kubernetes Slack channel accessible via http://slack.k8s.io/.\n"
+	"content": "다음 모듈에서 EKS로 여행을 진행하며 계속 지켜봐주십시오!\n질문은 늘 열려있습니다! 이 워크숍에서나 공식 쿠버네티스 슬랙 이나 AWSKRUG 슬랙에서 언제든지 직접 물어보십시오.\n"
 },
 {
 	"uri": "/helm_root/helm_nginx/searchchart/",
