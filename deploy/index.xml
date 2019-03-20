@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Deploy the Example Microservices on Amazon EKS 워크샵</title>
+    <title>마이크로서비스 예제 배포 on Amazon EKS 워크샵</title>
     <link>/deploy/</link>
-    <description>Recent content in Deploy the Example Microservices on Amazon EKS 워크샵</description>
+    <description>Recent content in 마이크로서비스 예제 배포 on Amazon EKS 워크샵</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
     <lastBuildDate>Tue, 18 Sep 2018 16:01:14 -0500</lastBuildDate>
@@ -12,114 +12,116 @@
     
     
     <item>
-      <title>Deploy our Sample Applications</title>
+      <title>예제 애플리케이션 배포</title>
       <link>/deploy/applications/</link>
       <pubDate>Tue, 18 Sep 2018 16:01:14 -0500</pubDate>
       
       <guid>/deploy/applications/</guid>
-      <description>apiVersion: apps/v1 kind: Deployment metadata: name: ecsdemo-nodejs labels: app: ecsdemo-nodejs namespace: default spec: replicas: 1 selector: matchLabels: app: ecsdemo-nodejs strategy: rollingUpdate: maxSurge: 25% maxUnavailable: 25% type: RollingUpdate template: metadata: labels: app: ecsdemo-nodejs spec: containers: - image: brentley/ecsdemo-nodejs:latest imagePullPolicy: Always name: ecsdemo-nodejs ports: - containerPort: 3000 protocol: TCP  In the sample file above, we describe the service and how it should be deployed. We will write this description to the kubernetes api using kubectl, and kubernetes will ensure our preferences are met as the application is deployed.</description>
+      <description>apiVersion: apps/v1 kind: Deployment metadata: name: ecsdemo-nodejs labels: app: ecsdemo-nodejs namespace: default spec: replicas: 1 selector: matchLabels: app: ecsdemo-nodejs strategy: rollingUpdate: maxSurge: 25% maxUnavailable: 25% type: RollingUpdate template: metadata: labels: app: ecsdemo-nodejs spec: containers: - image: brentley/ecsdemo-nodejs:latest imagePullPolicy: Always name: ecsdemo-nodejs ports: - containerPort: 3000 protocol: TCP  위에 예제 파일에는 서비스(service)와 이것이 어떻게 배포되는지를 기술되어 있습니다. 이 내용을 kubectl을 이용하여 쿠버네티스 API에 쓰면, 쿠버네티스는 응용 프로그램이 배포될 때에 우리의 설정에 충족시킬 것입니다.</description>
     </item>
     
     <item>
-      <title>Deploy NodeJS Backend API</title>
+      <title>NodeJS 백엔드 API 배포</title>
       <link>/deploy/deploynodejs/</link>
       <pubDate>Tue, 18 Sep 2018 17:39:30 -0500</pubDate>
       
       <guid>/deploy/deploynodejs/</guid>
-      <description>Let’s bring up the NodeJS Backend API!
-Copy/Paste the following commands into your Cloud9 workspace:
-cd ~/environment/ecsdemo-nodejs kubectl apply -f kubernetes/deployment.yaml kubectl apply -f kubernetes/service.yaml  We can watch the progress by looking at the deployment status:
+      <description>NodeJS 백엔드 API를 올려 봅시다!
+다음의 명령어를 귀하의 클라우드9 워크스페이스에 복사/붙여넣기 합니다.
+cd ~/environment/ecsdemo-nodejs kubectl apply -f kubernetes/deployment.yaml kubectl apply -f kubernetes/service.yaml  디폴로이먼트 상황을 확인하여 배포 진행 과정을 지켜 볼 수 있습니다.
 kubectl get deployment ecsdemo-nodejs  </description>
     </item>
     
     <item>
-      <title>Deploy Crystal Backend API</title>
+      <title>크리스탈 백엔드 API 배포하기</title>
       <link>/deploy/deploycrystal/</link>
       <pubDate>Tue, 18 Sep 2018 17:40:03 -0500</pubDate>
       
       <guid>/deploy/deploycrystal/</guid>
-      <description>Let’s bring up the Crystal Backend API!
-Copy/Paste the following commands into your Cloud9 workspace:
-cd ~/environment/ecsdemo-crystal kubectl apply -f kubernetes/deployment.yaml kubectl apply -f kubernetes/service.yaml  We can watch the progress by looking at the deployment status:
+      <description>크리스탈 백엔드 API를 올려 봅시다!
+다음의 명령어를 귀하의 클라우드9 워크스페이스에 복사/붙여넣기 합니다.
+cd ~/environment/ecsdemo-crystal kubectl apply -f kubernetes/deployment.yaml kubectl apply -f kubernetes/service.yaml  디폴로이먼트 상황을 확인하여 배포 진행 과정을 지켜 볼 수 있습니다.
 kubectl get deployment ecsdemo-crystal  </description>
     </item>
     
     <item>
-      <title>Let&#39;s check Service Types</title>
+      <title>서비스(service) 종류 확인</title>
       <link>/deploy/servicetype/</link>
       <pubDate>Tue, 18 Sep 2018 17:40:09 -0500</pubDate>
       
       <guid>/deploy/servicetype/</guid>
-      <description>Before we bring up the frontend service, let&amp;rsquo;s take a look at the service types we are using: This is kubernetes/service.yaml for our frontend service:
-apiVersion: v1 kind: Service metadata: name: ecsdemo-frontend spec: selector: app: ecsdemo-frontend type: LoadBalancer ports: - protocol: TCP port: 80 targetPort: 3000  Notice type: LoadBalancer: This will configure an ELB to handle incoming traffic to this service.
-Compare this to kubernetes/service.yaml for one of our backend services:</description>
+      <description>프론트엔드 서비스를 올리기 전에 우리가 사용할 서비스(service) 종류를 살펴봅니다. 이것은 kubernetes/service.yaml으로 프론트엔드 서비스를 위한 설정입니다.
+apiVersion: v1 kind: Service metadata: name: ecsdemo-frontend spec: selector: app: ecsdemo-frontend type: LoadBalancer ports: - protocol: TCP port: 80 targetPort: 3000  type: LoadBalancer을 주목하십시요. 이는 ELB를 설정하여 서비스로 들어오는 트래픽을 처리하게 합니다.
+백엔드 서비스를 위한 kubernetes/service.yaml과 비교합니다.
+apiVersion: v1 kind: Service metadata: name: ecsdemo-nodejs spec: selector: app: ecsdemo-nodejs ports: - protocol: TCP port: 80 targetPort: 3000  프론트엔드와는 달리 특정 서비스 종류를 설정하지 않았습니다.</description>
     </item>
     
     <item>
-      <title>Ensure the ELB Service Role exists</title>
+      <title>ELB 서비스 롤 존재 확인</title>
       <link>/deploy/servicerole/</link>
       <pubDate>Tue, 18 Sep 2018 17:40:09 -0500</pubDate>
       
       <guid>/deploy/servicerole/</guid>
-      <description>In AWS accounts that have never created a load balancer before, it&amp;rsquo;s possible that the service role for ELB might not exist yet.
-We can check for the role, and create it if it&amp;rsquo;s missing.
-Copy/Paste the following commands into your Cloud9 workspace:
+      <description>이전에 로드 밸런서를 생성하지 않은 AWS 계정인 경우, ELB의 서비스 롤(role)이 아직 존재하지 않을 수 있습니다.
+롤을 확인하고 누락된 경우에는 만듭니다.
+다음의 명령어를 귀하의 클라우드9 워크스페이스에 복사/붙여넣기 합니다.
 aws iam get-role --role-name &amp;quot;AWSServiceRoleForElasticLoadBalancing&amp;quot; || aws iam create-service-linked-role --aws-service-name &amp;quot;elasticloadbalancing.amazonaws.com&amp;quot;  </description>
     </item>
     
     <item>
-      <title>Deploy Frontend Service</title>
+      <title>프론트엔드 서비스 배포하기</title>
       <link>/deploy/deployfrontend/</link>
       <pubDate>Tue, 18 Sep 2018 17:40:09 -0500</pubDate>
       
       <guid>/deploy/deployfrontend/</guid>
-      <description>Let’s bring up the Ruby Frontend!
-Copy/Paste the following commands into your Cloud9 workspace:
-cd ~/environment/ecsdemo-frontend kubectl apply -f kubernetes/deployment.yaml kubectl apply -f kubernetes/service.yaml  We can watch the progress by looking at the deployment status:
+      <description>루비 프론트엔드를 올려 봅시다!
+다음의 명령어를 귀하의 클라우드9 워크스페이스에 복사/붙여넣기 합니다.
+cd ~/environment/ecsdemo-frontend kubectl apply -f kubernetes/deployment.yaml kubectl apply -f kubernetes/service.yaml  디폴로이먼트 상황을 확인하여 배포 진행 과정을 지켜 볼 수 있습니다.
 kubectl get deployment ecsdemo-frontend  </description>
     </item>
     
     <item>
-      <title>Find the Service Address</title>
+      <title>서비스(service) 주소 찾기</title>
       <link>/deploy/viewservices/</link>
       <pubDate>Tue, 18 Sep 2018 17:40:09 -0500</pubDate>
       
       <guid>/deploy/viewservices/</guid>
-      <description>Now that we have a running service that is type: LoadBalancer we need to find the ELB&amp;rsquo;s address. We can do this by using the get services operation of kubectl:
-kubectl get service ecsdemo-frontend  Notice the field isn&amp;rsquo;t wide enough to show the FQDN of the ELB. We can adjust the output format with this command:
-kubectl get service ecsdemo-frontend -o wide  If we wanted to use the data programatically, we can also output via json.</description>
+      <description>이제type : LoadBalancer로 실행중인 서비스(service)가 있으니, ELB의 주소를 알아봐야 합니다. 이를 위해 kubectl로 get services 하면 됩니다.
+kubectl get service ecsdemo-frontend  위 명령어 출력은 ELB의 FQDN을 보여줄 만큼 필드가 길지 않습니다. 아래 명령으로 출력 형식을 조정할 수 있습니다.
+kubectl get service ecsdemo-frontend -o wide  이 데이터를 프로그램적으로 사용하기 원한다면, json 형식으로 출력할 수 있습니다. 다음은 json 출력을 사용하는 예제 입니다.
+ELB=$(kubectl get service ecsdemo-frontend -o json | jq -r &#39;.</description>
     </item>
     
     <item>
-      <title>Scale the Backend Services</title>
+      <title>백엔드 서비스 스케일링</title>
       <link>/deploy/scalebackend/</link>
       <pubDate>Tue, 18 Sep 2018 17:40:09 -0500</pubDate>
       
       <guid>/deploy/scalebackend/</guid>
-      <description>When we launched our services, we only launched one container of each. We can confirm this by viewing the running pods:
-kubectl get deployments  Now let&amp;rsquo;s scale up the backend services:
-kubectl scale deployment ecsdemo-nodejs --replicas=3 kubectl scale deployment ecsdemo-crystal --replicas=3  Confirm by looking at deployments again:
-kubectl get deployments  Also, check the browser tab where we can see our application running. You should now see traffic flowing to multiple backend services.</description>
+      <description>서비스 시작시에 각각의 컨테이너를 딱 1개씩만 런칭했었습니다. 이는 운영 중인 파드를 살펴보면 확인할 수 있습니다.
+kubectl get deployments  이제 백엔드 서비스를 스케일 업 합니다.
+kubectl scale deployment ecsdemo-nodejs --replicas=3 kubectl scale deployment ecsdemo-crystal --replicas=3  디폴로이먼트를 다시 확인해봅니다.
+kubectl get deployments  또한 브라우저에서 실행 중인 우리 애플리케이션을 확인합니다. 이제는 여러 백엔드 서비스로 트래픽이 흐르는 것을 볼 수 있어야 합니다.</description>
     </item>
     
     <item>
-      <title>Scale the Frontend</title>
+      <title>프론트엔드 스케일링</title>
       <link>/deploy/scalefrontend/</link>
       <pubDate>Tue, 18 Sep 2018 17:40:09 -0500</pubDate>
       
       <guid>/deploy/scalefrontend/</guid>
-      <description>Let&amp;rsquo;s also scale our frontend service the same way:
-kubectl get deployments kubectl scale deployment ecsdemo-frontend --replicas=3 kubectl get deployments  Check the browser tab where we can see our application running. You should now see traffic flowing to multiple frontend services.</description>
+      <description>또한 프론트엔드 서비스도 같은 방식으로 스케일링 합니다.
+kubectl get deployments kubectl scale deployment ecsdemo-frontend --replicas=3 kubectl get deployments  브라우저에서 실행 중인 우리 애플리케이션을 확인합니다. 이제는 여러 프론트엔드 서비스로 트래픽이 흐르는 것을 볼 수 있어야 합니다.</description>
     </item>
     
     <item>
-      <title>Cleanup the applications</title>
+      <title>애플리케이션 정리</title>
       <link>/deploy/cleanup/</link>
       <pubDate>Tue, 07 Aug 2018 13:37:53 -0700</pubDate>
       
       <guid>/deploy/cleanup/</guid>
-      <description>To delete the resources created by the applications, we should delete the application deployments:
-Undeploy the applications:
+      <description>애플리케이션이 생성한 리소스를 삭제하려면 해당 애플리케이션의 디폴로이먼트를 삭제해야 합니다.
+애플리케이션 디폴로이먼트 삭제
 cd ~/environment/ecsdemo-frontend kubectl delete -f kubernetes/service.yaml kubectl delete -f kubernetes/deployment.yaml cd ~/environment/ecsdemo-crystal kubectl delete -f kubernetes/service.yaml kubectl delete -f kubernetes/deployment.yaml cd ~/environment/ecsdemo-nodejs kubectl delete -f kubernetes/service.yaml kubectl delete -f kubernetes/deployment.yaml  </description>
     </item>
     
